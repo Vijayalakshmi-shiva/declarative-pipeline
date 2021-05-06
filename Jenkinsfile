@@ -12,10 +12,30 @@ pipeline {
     }
     stage('Test'){
       steps{
-        echo "Testing Release ${RELEASE} with log level ${LOG_LEVEL} not visible ... "
+        echo "Testing Release ${RELEASE} ...."
       }
       }
+    }
+    stage('Deploy'){
+      input{
+        message 'Deploy'
+        OK "do it"
+        parameter{
+          string(name : 'TARGET_ENVIRONMENT', defaultValue: 'PROD', description: 'Target deployment environment')
+        }
+      }
+      steps{
+        echo "Deplying  Release ${RELEASE} to environment ${TARGET_ENVIRONMENT} ...."
+      }
+      }
+  
+  
   }
+post {
+  always{
+    echo "Prints whether deploy was success or failure"
+  }
+}
   environment {
     RELEASE = '20.05'
   }
