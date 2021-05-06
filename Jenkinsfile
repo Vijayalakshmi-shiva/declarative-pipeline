@@ -1,14 +1,22 @@
 pipeline {
   agent any
   stages {
-    stage('stage1') {
+    stage('build') {
+      agent any
+       environment {
+         LOG_LEVEL ='INFO'
+       }
       steps {
-        echo 'Hello shiva'
+        echo 'Building Release ${RELEASE} with log level ${LOG_LEVEL} ... '
       }
     }
-
+    stage('Test'){
+      steps{
+        echo 'Testing Release ${RELEASE} with log level ${LOG_LEVEL} not visible ... '
+      }
+      }
   }
   environment {
-    demo = '1'
+    RELEASE = '20.05'
   }
 }
