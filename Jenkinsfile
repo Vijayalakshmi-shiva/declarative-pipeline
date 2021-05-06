@@ -39,4 +39,4 @@ post {
   environment {
     RELEASE = '20.05'
   }
-}
+
