@@ -20,7 +20,7 @@ pipeline {
       input{
         message 'Deploy'
         ok 'do it'
-        parameter{
+        parameters{
           string(name : 'TARGET_ENVIRONMENT', defaultValue: 'PROD', description: 'Target deployment environment')
         }
       }
