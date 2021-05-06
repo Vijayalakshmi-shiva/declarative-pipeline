@@ -15,7 +15,7 @@ pipeline {
         echo "Testing Release ${RELEASE} ...."
       }
       }
-    }
+    
     stage('Deploy'){
       input{
         message 'Deploy'
@@ -39,4 +39,5 @@ post {
   environment {
     RELEASE = '20.05'
   }
+}
 
